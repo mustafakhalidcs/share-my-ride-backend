@@ -5,18 +5,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include_once 'inc/access_control.php';
-// $data=json_decode(file_get_contents("php://input"));
-// $name=mysql_real_escape_string($data->name);
-// $password=mysql_real_escape_string($data->password);
-// $role=mysql_real_escape_string($data->role);
+
 include_once 'inc/connection.php';
-$query="INSERT INTO `users`(`id`, `name`, `password`, `role`) VALUES ('','Ali','khan','manager')";
-$result=mysqli_query($conn,$query);
-if($result){
-	echo "Congrats ";
-}
-else{
-	echo "Some error occcured";
-}
+include_once 'inc/access_control.php';
+	if($_POST['command']=='insert'){
+		$name=$_POST['name'];
+		$password=$_POST['password'];
+		$role=$_POST['role'];
+		$query="INSERT INTO `users`(`id`, `name`, `password`, `role`) VALUES ('','$name','$password','$role')";
+		$result=mysqli_query($conn,$query);
+			if($result){
+				echo "Data inserted successfully";
+			}
+			else{
+				echo "Some error occcured";
+			}
+	}
 ?>
