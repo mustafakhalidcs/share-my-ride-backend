@@ -8,6 +8,8 @@
 
 include_once 'inc/connection.php';
 include_once 'inc/access_control.php';
+	$sql="SELECT * FROM `users`";
+	$run=mysqli_query($conn,$sql);
 	if($_POST["command"]=="createUser"){
 	
 		$first_name=$_POST['first_name'];
@@ -17,6 +19,12 @@ include_once 'inc/access_control.php';
 		$email=$_POST['email'];
 		$password=$_POST['password'];
 		$nic=$_POST['NIC'];
+		while($row=mysqli_fetch_assoc($run)){
+			if($row['email'] == $email){
+				echo 'ala';
+			}
+		}
+		exit;
 		$query="INSERT INTO `users`(`user_id`, `first_name`, `last_name`, `mobile`, `resident_of`, `email`, `password`, `NIC`)
 		 VALUES ('','$first_name','$last_name','$mobile','$resident_of','$email','$password','$nic')";
 		$result=mysqli_query($conn,$query);
@@ -27,4 +35,5 @@ include_once 'inc/access_control.php';
 				echo "Some error occcured";
 			}
 	}
+	 
 ?>
