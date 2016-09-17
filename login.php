@@ -1,7 +1,6 @@
 <?php 
 include_once 'inc/connection.php';
 include_once 'inc/access_control.php';
-$logged_in = false;
 if($_POST['command']=='loginRequest'){
 	$email=$_POST['email'];
 	$password=$_POST['password'];
