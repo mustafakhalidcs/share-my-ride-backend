@@ -23,8 +23,9 @@ include_once 'inc/access_control.php';
 			if($row['email'] == $email){
 				echo 'ala';
 			}
+			exit;
 		}
-		exit;
+		
 		$query="INSERT INTO `users`(`user_id`, `first_name`, `last_name`, `mobile`, `resident_of`, `email`, `password`, `NIC`)
 		 VALUES ('','$first_name','$last_name','$mobile','$resident_of','$email','$password','$nic')";
 		$result=mysqli_query($conn,$query);
