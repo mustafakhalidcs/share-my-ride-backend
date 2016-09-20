@@ -22,10 +22,10 @@ if($_REQUEST['command']=="findpeople"){
 	 // AND role='driver'
 	 // ORDER by pn.modified_date DESC
  	// ";
- 	// $sql = "SELECT * FROM `plan`
-	 // 	WHERE departure_date = '$departure_date'
-	 // 	AND destination LIKE '%%$destination%%'
-	 // 	AND role='driver'";
+ 	$sql = "SELECT * FROM `plan`
+	 	WHERE departure_date = '$departure_date'
+	 	AND destination LIKE '%%$destination%%'
+	 	AND role='driver'";
  	$run = mysqli_query($conn , $sql);
  	if($run){
  		while ($row = mysqli_fetch_assoc($run)) {
@@ -47,7 +47,6 @@ else{
 	AND pn.plan_id = dr.plan_id
 	ORDER by pn.modified_date DESC
  	";
-
 	$run = mysqli_query($conn,$sql);
 	if($run){
 		while ($row = mysqli_fetch_assoc($run)) {

@@ -8,7 +8,7 @@
 
 include_once 'inc/connection.php';
 include_once 'inc/access_control.php';
-if($_REQUEST["command"]=="tourDetail"){
+//if($_REQUEST["command"]=="tourDetail"){
 $plan_id = $_REQUEST['plan_id'];
 	$sql = "SELECT user.first_name, user.last_name,user.email,user.mobile,
 	pn.departure_date,pn.current_location,pn.destination,pn.modified_date,pn.plan_id,
@@ -27,5 +27,5 @@ $plan_id = $_REQUEST['plan_id'];
 		}
 		echo json_encode($rows);
 	}
-}	 
+//}	 
 ?>
