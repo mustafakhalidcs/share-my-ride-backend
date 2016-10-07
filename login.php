@@ -14,8 +14,6 @@ if($_POST['command']=='loginRequest'){
 	else{
 		echo 0;
 	}
-	
-		
 }
- ?>
+?>
 
