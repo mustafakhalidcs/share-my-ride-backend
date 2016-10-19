@@ -13,6 +13,7 @@ if($_REQUEST['command']=='showNotifications'){
 	AND p.plan_id = req.rider_plan_id
 	AND u.email = req.email
 	AND req.isCaught = 0
+	order by p.departure_date desc
 	";
 	$run = mysqli_query($conn,$sql);
 		if($run){

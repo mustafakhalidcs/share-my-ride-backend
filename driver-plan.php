@@ -42,14 +42,15 @@ if($_POST["planof"]=="driver"){
 	$per_head_charge =$_POST['per_head_charge'];
 	$vehicle_type = $_POST['vehicle_type'];
 	$vehicle_number = $_POST['vehicle_number'];
-	$driver_sql = "INSERT INTO `driverplan`(`dp_id`, `plan_id`, `available_seats`, `per_head_charge`, `vehical_type`, `vehicle_number`, `notification_id`) 
-	VALUES ('','$plan_id','$available_seats','$per_head_charge','$vehicle_type','$vehicle_number','')";
+	$driver_sql = "INSERT INTO `driverplan`(`dp_id`, `plan_id`, `available_seats`, `per_head_charge`, `vehical_type`, `vehicle_number`) 
+	VALUES ('','$plan_id','$available_seats','$per_head_charge','$vehicle_type','$vehicle_number')";
 	$run_sql = mysqli_query($conn , $driver_sql);
 	if($run_sql){
 		$driver_plan_msg = 'dpp';
 	}
 	else{
 		$driver_plan_msg = 'dpnp';
+		echo mysqli_error($conn);
 	}
 	echo $driver_plan_msg;
 	
