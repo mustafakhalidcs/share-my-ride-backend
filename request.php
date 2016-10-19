@@ -3,34 +3,31 @@ include_once 'inc/connection.php';
 include_once 'inc/access_control.php';
 if($_REQUEST['command']=='joinRequest'){
 	$rider_id = $_REQUEST['email'];
+	$driver_email = $_REQUEST['driver_email'];
 	$plan_id = $_REQUEST['plan_id'];
-	$driver_email=$_REQUEST['driver_email'];
+	$rider_plan_id = $_REQUEST['rider_plan_id'];
 	$isCaught = 0;
-	$sql = "INSERT INTO `requests`(`request_id`, `email`, `plan_id`,`driver_email`,`isCaught`) VALUES 
-	('','$rider_id','$plan_id','$driver_email','$isCaught')";
+	$notif_query = '';
+	$status = 'pending';
+	$sql = "INSERT INTO `requests`(`request_id`, `email`, `driver_email`,`plan_id`,`rider_plan_id`,`isCaught`)
+	VALUES ('','$rider_id','$driver_email','$plan_id','$rider_plan_id','$isCaught')";
 	$run = mysqli_query($conn, $sql);
 	if($run){
 		$request_id = mysqli_insert_id($conn);
-		$notif_sql = "INSERT INTO `notificationheader`(`notification_id`, `request_id`) VALUES ('' , '$request_id')";
+		$notif_sql = "INSERT INTO `notificationheader`(`notification_id`, `request_id`,`rider_plan_id`,`driver_plan_id`,`status`,`isCaught`) VALUES ('' , '$request_id','$rider_plan_id','$plan_id','$status','$isCaught')";
 		$run_notif_sql = mysqli_query($conn , $notif_sql);
 		if($run_notif_sql){
-			$notification_id = mysqli_insert_id($conn);
-			$status = 'pending';
-			$notif_query = "INSERT INTO `notificationdetail`(`notification_id`, `status`) VALUES 
-			('$notification_id','$status')";
-			if(mysqli_query($conn,$notif_query)){
-				echo 1;
-			}
-			else echo mysqli_error($conn);
+			echo 1;
+		}
+		else {
+			echo mysqli_error($conn)."".$notif_sql;
+		}
 			
 		}
-		  echo mysqli_error($conn);
-		
-	}
 	else{
-		 echo mysqli_error($conn);
+		echo mysqli_error($conn)." ".$sql;
 	}
 }
- ?>
+?>
 
 

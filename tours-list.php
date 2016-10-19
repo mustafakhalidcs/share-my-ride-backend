@@ -40,6 +40,7 @@ elseif ($_REQUEST['command']=='listAllTours') {
 	WHERE user.email = pn.email
 	AND pn.plan_id = dr.plan_id
 	AND user.email != '$rider_email'
+	-- AND dr.available_seats != 0
 	ORDER by pn.modified_date DESC
  	";
  	$run = mysqli_query($conn,$sql);
