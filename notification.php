@@ -20,7 +20,13 @@ if($_REQUEST['command']=='showNotifications'){
 			while ($row=mysqli_fetch_assoc($run)) {
 				$rows[]=$row;
 			}
-			echo json_encode($rows);
+			
+			if($rows){
+				echo json_encode($rows);
+			}
+			else{
+				echo 0;
+			}
 		}
 		else{
 		echo mysqli_error($conn);	

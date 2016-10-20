@@ -26,10 +26,6 @@ switch ($_REQUEST['command']) {
 		WHERE `rider_plan_id`='$rider_plan_id'";
 		$run = mysqli_query($conn,$sql);
 		if($run){
-			// $query = "UPDATE driverplan dp ,notificationheader nh , riderplan rp
-			// on nh.driver_plan_id = dp.plan_id AND nh.rider_plan_id = rp.plan_id AND nh.driver_plan_id = dp.plan_id
-			// SET dp.available_seats = dp.available_seats - rp.seats_required
-			// ";
 			$query = "UPDATE driverplan dp JOIN notificationheader nh
 			ON dp.plan_id = nh.driver_plan_id
 			JOIN riderplan rp
