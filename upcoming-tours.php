@@ -3,7 +3,7 @@ include_once 'inc/connection.php';
 include_once 'inc/access_control.php';
 if($_REQUEST['command']=='showUpcomingTours'){
 	$email = $_REQUEST['email'];
-	$sql="SELECT destination,current_location,departure_date
+	$sql="SELECT destination,current_location,departure_date,role
 	FROM plan
 	where email='$email'
 	";
@@ -17,13 +17,11 @@ if($_REQUEST['command']=='showUpcomingTours'){
 		else{
 		echo $email." have no plans yet";	
 		}
-	
-	
 }
 else{
 	echo " Illegal way of getting information";
 }
- ?>
-}
+?>
+
 
 
