@@ -19,21 +19,15 @@ include_once 'inc/access_control.php';
 		$email=$_POST['email'];
 		$password=$_POST['password'];
 		$nic=$_POST['NIC'];
-		while($row=mysqli_fetch_assoc($run)){
-			if($row['email'] == $email){
-				echo 'ala';
-			}
-			exit;
-		}
 		
 		$query="INSERT INTO `users`(`user_id`, `first_name`, `last_name`, `mobile`, `resident_of`, `email`, `password`, `NIC`)
 		 VALUES ('','$first_name','$last_name','$mobile','$resident_of','$email','$password','$nic')";
 		$result=mysqli_query($conn,$query);
 			if($result){
-				echo "User created successfully";
+				echo 1;
 			}
 			else{
-				echo "Some error occcured";
+				echo 0;
 			}
 	}
 	 
