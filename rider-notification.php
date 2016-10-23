@@ -19,15 +19,16 @@ if($_REQUEST['command']=='showNotifications'){
 	;
 	";
 	$run = mysqli_query($conn,$sql);
-		if($run){
+	$num_rows = mysqli_num_rows($run);
+	if($num_rows > 0){
 			while ($row=mysqli_fetch_assoc($run)) {
 				$rows[]=$row;
 			}
 			echo json_encode($rows);
-		}
-		else{
-		echo  mysqli_error($conn)."".$sql;
-		}
+	}
+	else{
+		echo  0;
+	}
 }
 ?>
 

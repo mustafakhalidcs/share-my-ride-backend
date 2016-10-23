@@ -13,11 +13,13 @@ if($_REQUEST['command']=="findpeople"){
  	$departure_date = $_REQUEST['departure_date'];
  	$destination = $_REQUEST['destination'];
  	$rider_email = $_REQUEST['email'];
- 	$sql = "SELECT * FROM `plan`
-	 	WHERE departure_date = '$departure_date'
-	 	AND destination LIKE '%%$destination%%'
-	 	AND role='driver'
-		AND email != '$rider_email'
+ 	$sql = "SELECT * FROM plan p , driverplan dp
+	 	WHERE p.departure_date = '$departure_date'
+	 	AND p.destination LIKE '%%$destination%%'
+	 	AND p.role='driver'
+		AND p.email != '$rider_email'
+		AND dp.available_seats != 0
+		AND p.plan_id = dp.plan_id
 	 	";
  	$run = mysqli_query($conn , $sql);
  	if($run){

@@ -16,21 +16,17 @@ if($_REQUEST['command']=='showNotifications'){
 	order by p.departure_date desc
 	";
 	$run = mysqli_query($conn,$sql);
-		if($run){
-			while ($row=mysqli_fetch_assoc($run)) {
+	$num_rows = mysqli_num_rows($run);
+	if($num_rows > 0){
+		while ($row=mysqli_fetch_assoc($run)) {
 				$rows[]=$row;
-			}
+		}
+		echo json_encode($rows);
 			
-			if($rows){
-				echo json_encode($rows);
-			}
-			else{
-				echo 0;
-			}
-		}
-		else{
-		echo mysqli_error($conn);	
-		}
+	}
+	else{
+	echo 0;	
+	}
 }
 ?>
 

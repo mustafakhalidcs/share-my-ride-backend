@@ -11,7 +11,10 @@ include_once 'inc/access_control.php';
 	$sql="SELECT * FROM `users`";
 	$run=mysqli_query($conn,$sql);
 	if($_POST["command"]=="createUser"){
-	
+		$image = $_POST['image'];
+		//print_r($_POST);
+		// echo base64_decode($image['src']);
+		// exit;
 		$first_name=$_POST['first_name'];
 		$last_name=$_POST['last_name'];
 		$mobile=$_POST['mobile'];
