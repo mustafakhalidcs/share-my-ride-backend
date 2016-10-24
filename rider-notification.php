@@ -15,7 +15,7 @@ if($_REQUEST['command']=='showNotifications'){
 	AND p.plan_id = nh.rider_plan_id
 	AND (nh.status = 'approved' OR nh.status = 'rejected')
 	AND nh.isCaught = '0'
-	order by p.departure_date desc;
+	order by p.plan_id desc;
 	;
 	";
 	$run = mysqli_query($conn,$sql);

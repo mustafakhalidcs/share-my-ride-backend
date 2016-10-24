@@ -11,7 +11,7 @@ include_once 'inc/access_control.php';
 if($_REQUEST["command"]=="tourDetail"){
 $plan_id = $_REQUEST['plan_id'];
 	$sql = "SELECT user.first_name, user.last_name,user.email,user.mobile,
-	pn.departure_date,pn.current_location,pn.destination,pn.modified_date,pn.plan_id,
+	pn.departure_date,pn.current_location,pn.destination,pn.modified_date,pn.plan_id,pn.departure_time,
 	pn.role,pn.route,pn.smoker,pn.music_lover,
   	dr.available_seats,dr.per_head_charge,dr.vehical_type
  	FROM users user , plan pn , driverplan dr

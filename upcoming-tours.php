@@ -6,6 +6,7 @@ if($_REQUEST['command']=='showUpcomingTours'){
 	$sql="SELECT destination,current_location,departure_date,role
 	FROM plan
 	where email='$email'
+	order by departure_date desc
 	";
 	$run = mysqli_query($conn,$sql);
 		if($run){

@@ -12,7 +12,6 @@ $plan_msg = '';
 $driver_plan_msg = '';
 $rider_plan_msg = '';
 if($_POST["command"]=="postplan"){
-	print_r($_POST);
 	$email = $_POST['email'];
 	$destination = $_POST['destination'];
 	$current_location =$_POST['current_location'];

@@ -29,7 +29,7 @@ switch ($_REQUEST['command']) {
 			$query = "UPDATE driverplan dp JOIN notificationheader nh
 			ON dp.plan_id = nh.driver_plan_id
 			JOIN riderplan rp
-			ON rp.plan_id =nh.rider_plan_id 
+			ON rp.plan_id =nh.rider_plan_id AND nh.rider_plan_id = '$rider_plan_id'
 			SET dp.available_seats = (dp.available_seats - rp.seats_required)
 			";
 			$exec = mysqli_query($conn,$query);

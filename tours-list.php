@@ -29,7 +29,7 @@ if($_REQUEST['command']=="findpeople"){
  		echo json_encode($rows);
  	}
  	else{
- 		echo 'No people are moving to '.$destination.' at '.$departure_date;
+ 		echo 0;
  	}
  	exit;
  	
