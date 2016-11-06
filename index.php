@@ -10,9 +10,6 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <?php
-        // put your code here
-        
-        ?>
+        <h3>Hello from Backend serveice</h3>
     </body>
 </html>

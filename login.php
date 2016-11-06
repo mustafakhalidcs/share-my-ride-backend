@@ -2,18 +2,18 @@
 include_once 'inc/connection.php';
 include_once 'inc/access_control.php';
 if($_POST['command']=='loginRequest'){
-	$name=$_POST['name'];
+	$email=$_POST['email'];
 	$password=$_POST['password'];
-	$query="SELECT * FROM `users` WHERE name='$name' && password='$password'";
+	$query="SELECT * FROM `users` WHERE email='$email' && password='$password'";
 	$result=mysqli_query($conn,$query);
+	$num_rows=mysqli_num_rows($result);
 	$row=mysqli_fetch_assoc($result);
-			if($row){
-			return true;
-		}
-		else{
-			return false;
-		}
-		
+	if($num_rows == 1){
+		echo 1;
+	}
+	else{
+		echo 0;
+	}
 }
- ?>
+?>
 
